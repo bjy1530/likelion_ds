@@ -1,0 +1,42 @@
+<head>
+    <style>
+        form {
+          background: -webkit-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+          background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+          background: linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+          margin: auto;
+          position: relative;
+          width: 550px;
+          height: 450px;
+          font-family: Tahoma, Geneva, sans-serif;
+          font-size: 14px;
+          font-style: italic;
+          line-height: 24px;
+          font-weight: bold;
+          color: #09C;
+          text-decoration: none;
+          border-radius: 10px;
+          padding: 10px;
+          border: 1px solid #999;
+          border: inset 1px solid #333;
+          -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+          -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+        }
+        textarea{
+            width: 400px;
+            height: 250px;
+        }
+    </style>
+</head>
+<body>
+    <center><h2>새글 쓰기</h2>
+    <div class="container">
+        <%= form_for @post do |f| %>
+            <%= f.text_field 'title' %><br/><br/>
+            <%= f.text_area 'content' %><br/><br/>
+            <%= f.submit '제출'%>
+        <%end%>
+    </div>
+    </center>
+</body>

@@ -1,0 +1,36 @@
+<head>
+    <style>
+        .title-box{
+            font-size: 2em;
+            width: 500px;
+            height: 50px;
+            border: 1px solid gray;
+        }
+        .content-box{
+            font-size: 15px;
+            width: 500px;
+            height: 500px;
+            background-color: gray;
+            border: 1px solid gray;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container col md">
+        <div class="title-box">
+        <label>제목 &nbsp; : &nbsp;</label>
+        <%= @notice.title %></div><br/>
+        <div class="content-box">
+        <label>내용</label><br/>
+        <%= @notice.content %></div><br/>
+        <label>마감 날짜 &nbsp; : &nbsp;</label>
+        <%= @notice.deadline %><br/>
+    </div>
+    <% if current_user.has_role? :admin %>
+        <%=link_to '수정',edit_notice_path %>
+    <%end%>
+    <br/>
+    <br/>
+    <%=link_to '목록', notices_path%>
+</body>

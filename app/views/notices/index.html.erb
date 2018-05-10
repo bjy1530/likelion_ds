@@ -1,0 +1,17 @@
+<body>
+<div class="container">   
+<% @notices.each do |n| %>
+    <label>제목 &nbsp; : &nbsp; </label>
+    <%= n.title %> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <%= n.deadline %>&nbsp;
+    <%= link_to '공지보기', notice_path(n.id) %><br/>
+<%end%>
+</div>
+<br/>
+<% if signed_in? %>
+    <% if current_user.has_role? :admin %>
+        <center><%=link_to '공지작성', new_notice_path %></center>
+    <%else%>
+    <%end%>
+<%end%>
+</body>
+    

@@ -1,0 +1,21 @@
+<head>
+    <style>
+        textarea{
+            width: 400px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<center>
+<%= form_for @notice do |f| %>
+    <label>제목</label>
+    <%=f.text_field 'title' %><br/><br/>
+    <label>내용</label><br/>
+    
+    <%=f.text_area 'content' %><br/><br/>
+    <label>마감 날짜</label>
+    <%=f.datetime_field 'deadline' %><br/><br/>
+    <%=f.submit '작성' %>
+<%end%>
+</center>

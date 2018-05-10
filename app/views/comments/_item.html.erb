@@ -1,0 +1,17 @@
+<li class="c" id="comment-<%=comment.id%>">
+    <div class="collection-item">
+        <span class="right"><%= comment.created_at %></span><br>
+        <!--<span class="title"><strong>작성자 : </strong><#%= comment.nickname %></span><br>-->
+        <p><%= comment.context %></p><br>
+        
+    
+        <% if comment.user_id == current_user.id %>
+        
+        <%= link_to "삭제", post_comment_path(comment),
+                            method: :delete,
+                            remote: true,
+                            data: {confirm: "정말로 삭제하시겠습니까?"} %>
+                            
+        <% end %>
+    </div>
+</li>

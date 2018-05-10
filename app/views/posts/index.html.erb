@@ -1,0 +1,21 @@
+<body>
+    <center><h1>Q&A페이지 입니다.</h1></center>
+    <div class="container">
+    <% @posts.each do |post| %>
+        <left>
+        <label>질문&nbsp;:&nbsp;</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= post.title %>
+        </left>
+        <div align="right">
+        <%=link_to '글보기', post_path(post.id)%>
+        <% if can? :destroy, post%>
+            <%=link_to '글삭제', post_path(post.id), method: 'delete', data: {confirm: "정말 삭제하시겠습니까?" } %>
+        <%end%></div>
+        <hr/>
+    <%end%>
+    </div>
+    <hr/>
+    <% if signed_in? %>
+        <center><%= link_to '글쓰기', new_post_path %></center>
+    <%end%>
+</body>
