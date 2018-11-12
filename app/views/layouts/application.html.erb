@@ -1,80 +1,68 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="bootstrap-4.0.0/favicon.ico">
-   <title>DS: LIKE LION</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <link href="bootstrap-4.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="navtest.css" rel="stylesheet">
-  <style>
-    li{
-      padding: 10px;
-    }
-  </style>
-</head>
-<body>
-<nav class="navbar fixed-top navbar-expand-lg navbar-transparent bg-transparent">
-      <a class="navbar-brand" href="/"><h1 class="navbar-brand">LIKELION DS</h1></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <%if user_signed_in? %>
-          <li><%= link_to user_roles(current_user), '#' %></li>
-          <%end%>
-          <li class="nav-item active">
-            <%= link_to 'HOME ', root_path %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to ' INTRO ', main_introPage_path %>
-          </li>
-          <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              BOARD
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <div class="btn-group">
-                <button type="button" class="btn dropdown-item"><%= link_to 'NOTICE' , notices_path  %></button>
-                <button type="button" class="btn dropdown-item"><%= link_to 'Q&A' , posts_path  %></button>
-                <button type="button" class="btn dropdown-item">FREE</button>
-              </div>
-            </div>
-          </li>
-        </ul>
-        <% if user_signed_in? %>
-          <button class="btn btn-danger btn-sm btn-signin"><%=link_to 'LOG OUT', destroy_user_session_path, :method => :delete %></button>
-        <%else%>
-          <button class="btn btn-danger btn-sm btn-signin"><%=link_to 'SIGN UP', new_user_registration_path %></button>
-          <button class="btn btn-danger btn-sm btn-signin"><%= link_to('LOG IN', new_user_session_path, :class => 'no-uline') %></button>
-        <%end%>
-        
-      </div>
-    </nav>
-    <br/><br/><br/>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>DS: LIKE LION</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <%= stylesheet_link_tag    'application', media: 'all'%>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <!-- 공통 navbar-->
+    <header class="header">
+      <nav class="navbar fixed-top navbar-expand-lg">
+        <a class="navbar-brand" href="/"><h1 class="navbar-brand">LIKELION DS</h1></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <%if user_signed_in? %>
+              <li><%= link_to user_roles(current_user), '#', :class => "nav-link" %></li>
+              <%end%>
+              <li class="nav-item active">
+                <%= link_to 'HOME ', root_path, :class => "nav-link" %>
+              </li>
+              <li class="nav-item active">
+                <%= link_to ' INTRO ', main_introPage_path, :class => "nav-link"  %>
+              </li>
+              <li class="nav-item active">
+                <%= link_to ' NOTICE ', notices_path, :class => "nav-link"  %>
+              </li>
+              <li class="nav-item active">
+                <%= link_to ' REVIEW ', reviews_path, :class => "nav-link"  %>
+              </li>
+              <li class="nav-item active">
+                <%= link_to ' Q&A ', posts_path, :class => "nav-link"  %>
+              </li>
+            </ul>
+            <% if user_signed_in? %>
+              <button class="btn btn-danger btn-sm btn-nav"><%=link_to 'LOG OUT', destroy_user_session_path, :method => :delete, :class => "nav-btn-menu-item-text" %></button>
+            <%else%>
+              <button class="btn btn-danger btn-sm btn-nav"><%=link_to 'SIGN UP', new_user_registration_path, :class => "nav-btn-menu-item-text" %></button>
+              <button class="btn btn-danger btn-sm btn-nav"><%=link_to 'LOG IN', new_user_session_path, :class => "nav-btn-menu-item-text" %></button>
+            <%end%>
+          </div>
+        </nav>
+    </header>
     
-    <%= yield %>
+    <!-- 내용 영역 -->
+    <main role="main">
+      <%= yield %>
+    </main>
+    
+    <!-- 공통 푸터 영역-->
     <footer class="footer">
       <div class="container text-center">
-        <span class="text-muted">
-          <a href="#"><img class="sns" src="http://tamarac.org/ImageRepository/Document?documentID=5678"></a>
-          <a href="#"><img class="sns" src="https://images-na.ssl-images-amazon.com/images/I/71VQR1WetdL.png"></a>
-        </span><br>
-        <span class="text-muted">2018 LikeLion 6th</span><br>
-        <span class="text-muted">LikeLion Duksung &copy; all rights reserved</span>
+        <span class="text-muted small">2018 LikeLion 6th</span><br>
+        <span class="text-muted small">LikeLion Duksung &copy; all rights reserved.</span>
       </div>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="bootstrap-4.0.0/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="bootstrap-4.0.0/assets/js/vendor/popper.min.js"></script>
-    <script src="bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
-    <script src="bootstrap-4.0.0/assets/js/vendor/holder.min.js"></script>
-
-</body>
+    
+    <!-- Bootstrap javascript-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </body>
 </html>

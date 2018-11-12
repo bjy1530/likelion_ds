@@ -1,10 +1,41 @@
-<body>
-<div class="container">   
-<% @notices.each do |n| %>
-    <label>제목 &nbsp; : &nbsp; </label>
-    <%= n.title %> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <%= n.deadline %>&nbsp;
-    <%= link_to '공지보기', notice_path(n.id) %><br/>
-<%end%>
+<div class="container post-header">
+    <center><h2>공지사항</h2></center>
+    <br/><br/>
+    <form action="notices" method="get" class="input-group">
+        <input type="text" name="search" class="form-control offset-md-4 col-md-4" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit">검색</button>
+        </div>
+    </form>
+    <br/><br/>
+    <ul class="list-group">   
+        <% @notices.each do |n| %>
+         <% 
+            String month = n.deadline.month
+            String day = n.deadline.day
+        %>
+            <li class="list-group-item offset-md-1 col-10 ">
+                <div class="row">
+                    <div class="col-6">
+                        <label># <%=n.id%> &nbsp; : &nbsp; </label><%= n.title %> 
+                    </div>
+                    <div class="col">
+                        마감 날짜 &nbsp; &nbsp; &nbsp;:&nbsp; &nbsp; &nbsp; <%= month %>월 <%= day%>일
+                    </div>
+                    <div class="col-2">
+                        <button type="button" class="btn btn-light"><%= link_to '공지보기', notice_path(n.id) %></button>
+                        <% if signed_in? %>
+                            <%if current_user.has_role? :admin %>
+                                <button type="button" class="btn btn-light">
+                                    <%=link_to '삭제', notice_path(n.id), method: 'delete', data: {confirm: "정말 삭제하시겠습니까?" } %>
+                                </button>
+                    </div>
+                </div>
+            </li>
+                            <%end%>
+                        <%end%>
+        <%end%>
+    </ul>
 </div>
 <br/>
 <% if signed_in? %>
@@ -13,5 +44,3 @@
     <%else%>
     <%end%>
 <%end%>
-</body>
-    

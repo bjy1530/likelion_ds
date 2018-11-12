@@ -1,21 +1,49 @@
-<body>
-    <center><h1>Q&A페이지 입니다.</h1></center>
-    <div class="container">
-    <% @posts.each do |post| %>
-        <left>
-        <label>질문&nbsp;:&nbsp;</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <%= post.title %>
-        </left>
-        <div align="right">
-        <%=link_to '글보기', post_path(post.id)%>
-        <% if can? :destroy, post%>
-            <%=link_to '글삭제', post_path(post.id), method: 'delete', data: {confirm: "정말 삭제하시겠습니까?" } %>
-        <%end%></div>
+ <div class="container post-header">
+        <h2><a href="/posts" style="color:black;">Q&A페이지</a></h2>
+        <form action="posts" method="get" class="offset-md-7" >
+            <label style="font-size: 18px;">분류 : &nbsp;</label>
+            <select class="custom-select col-2" name="category" style="font-size: 14px;">
+              <option selected>프론트엔드</option>
+              <option value="백엔드">백엔드</option>
+              <option value="기타">기타</option>
+            </select>
+            <button type="submit" style="color:white; font-size:13px;" class="btn btn-danger btn-sm btn-signin">이동</button>
+        </form>
+        <br/>
+        <table class="table">
+            <thead>
+              <tr>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>질문종류</th>
+                <th></th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+          
+            <tbody>
+              <% @posts.each do |post| %>
+                <tr>
+                   <td><%= link_to post.title, post %></td>
+                   <td><%= post.user.nickname %></td>
+                   <td><%= post.category %></td>
+                   <td>
+                      <% if can? :destroy, post%>
+                          <button type="button" class="btn btn-light">
+                              <%=link_to '글삭제', post_path(post.id), method: 'delete', data: {confirm: "정말 삭제하시겠습니까?" }, :style => "font-size:12px;" %>
+                          </button>
+                      <%end%>
+                    </td>
+                </tr>
+              <% end %>
+            </tbody>
+        </table>
         <hr/>
-    <%end%>
+        <% if signed_in? %>
+            <center>
+                
+                    <%= link_to '글쓰기', new_post_path, :style => "color:white; text-decoration:none;" , class: "btn btn-danger col-2"%>
+            </center>
+        <%end%>
+        <br/><br/>
     </div>
-    <hr/>
-    <% if signed_in? %>
-        <center><%= link_to '글쓰기', new_post_path %></center>
-    <%end%>
-</body>

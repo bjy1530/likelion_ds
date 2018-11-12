@@ -1,0 +1,271 @@
+* {
+  color: rgba( 30, 30, 30, 1.0) !important;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+li { // 리스트 아이템 폰트 크기
+  font-size: 0.8rem;
+  
+}
+
+li:hover { // 리스트 아이템 hover시 밑줄
+  text-decoration: underline;
+}
+
+em {
+  color: rgba( 187, 0,  0, 1.0) !important;
+}
+
+p {
+  padding-top:1%;
+}
+
+// 내비게이션바
+.navbar-brand { // 바 로고
+  color: rgba(187, 0, 0, 1.0) !important;
+  font-size: 20pt;
+  margin: 0 auto;
+}
+
+.navbar-brand:hover { // 바 로고 Hover
+  color: rgba(100, 100, 100, 1.0) !important;
+  text-decoration: none;
+}
+
+.navbar { // 바 배경
+  background-color: rgba(255, 255, 255, 0.35) !important;
+  border-radius: 0px;
+  height: 90px;
+  box-shadow: 0px 0px 4px 0px rgba(100, 100, 100, 0.25);
+}
+
+.navbar-nav .nav-item  .nav-link {
+  margin-right: 20px;
+}
+
+// 바 버튼
+.btn-nav {
+  margin-right: 20px;
+  padding: 0px 4px 0px 4px;
+}
+
+// 바 버튼 내부 텍스트
+.nav-btn-menu-item-text {
+  color: white !important;
+  font-size: 8pt;
+} 
+
+.nav-btn-menu-btn:hover {
+  text-decoration: none !important;
+}
+
+// 메인 텍스트 (사자)
+.main-text {
+  color: white !important;
+}
+
+.main-text-red {
+  color: rgba( 187, 0,  0, 1.0) !important;
+}
+
+// 게시판 헤더
+.post-header {
+  padding-top: 150px;
+}
+
+.testimonials {
+		padding-top: 7rem;
+		padding-bottom: 7rem;
+    background-color: white;
+}
+
+.testimonials .testimonial-item {
+		max-width: 18rem;
+}
+
+.testimonials .testimonial-item img {
+		max-width: 12rem;
+		box-shadow: 0px 5px 5px 0px rgba(100, 100, 100, 0.3);
+}
+
+
+p.col-md-4{
+  font-size:20px;
+  
+}
+
+      .intro-text{
+        padding-top: 30px;
+      }
+      .title-size{
+        font-size: 35px;
+        font-weight: bold;
+        padding-bottom: 30px;
+      }
+      .mini-title{
+        font-size: 20px;
+        padding-bottom: 10px;
+      }
+      .btn-circle {
+        font-size: 26px;
+        width: 55px;
+        height: 55px;
+        margin-top: 30px;
+        line-height: 45px;
+        -webkit-transition: background 0.3s ease-in-out;
+        -moz-transition: background 0.3s ease-in-out;
+        transition: background 0.3s ease-in-out;
+        color: white;
+        border: 2px solid white;
+        border-radius: 100% !important;
+        background: transparent;
+      }
+      .fa {
+        padding-bottom: 6px;
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        -ms-transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+      }
+
+.btn-signin {
+  margin-right: 20px;
+  font-weight: bold;
+}
+
+.bg-transparent {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+
+.navbar-toggler {
+  color: rgba(255, 255, 255, 0.0);
+  border-color: rgba(187, 0, 0, 0.0);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(187, 0, 0, 1.0)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='15' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-text {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-text a:hover, .navbar-text a:focus {
+  color: rgb(187, 0, 0);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: -80%;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 2rem;
+  padding: 0.1rem 0;
+  margin: 0.125rem 0 0;
+  font-size: 1rem;
+  color: white;
+  text-align: left;
+  list-style: none;
+  background-color: rgba(255, 255, 255, 1.0) !important;
+  background-clip: padding-box;
+  border: 0px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 0.25rem 1.5rem;
+  clear: both;
+  font-weight: 400;
+  color: white;
+  text-align: inherit;
+  white-space: nowrap;
+  color: white;
+  background-color: rgba(0, 0, 0, 0) transparent;
+  border: 0;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  color: white;
+  background-color: rgba(0, 0, 0, 0) transparent;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+  color: white;
+  background-color: rgba(0, 0, 0, 0) transparent;
+}
+
+.dropdown-item.disabled, .dropdown-item:disabled {
+  color: grey;
+  background-color: rgba(0, 0, 0, 0) transparent;
+}
+
+
+.btn-group > .btn {
+  background-color: transparent;
+}
+
+.dropdown-item-text {
+  color: white;
+  text-decoration: none;
+  background: transparent;
+}
+
+.dropdown-item-text:hover {
+  color: rgb(187, 0, 0);
+  text-decoration: none;
+  background: transparent;
+}
+
+.dropdown-item-text:active {
+  color: rgb(187, 0, 0);
+  text-decoration: none;
+  background: transparent;
+}
+
+// 메인 페이지 css
+ .intro-text{
+        padding-top: 30px;
+      }
+      .title-size{
+        font-size: 35px;
+        font-weight: bold;
+        padding-bottom: 30px;
+      }
+      .mini-title{
+        font-size: 20px;
+        padding-bottom: 10px;
+      }
+      .btn-circle {
+        font-size: 26px;
+        width: 55px;
+        height: 55px;
+        margin-top: 30px;
+        line-height: 45px;
+        -webkit-transition: background 0.3s ease-in-out;
+        -moz-transition: background 0.3s ease-in-out;
+        transition: background 0.3s ease-in-out;
+        color: white;
+        border: 2px solid white;
+        border-radius: 100% !important;
+        background: transparent;
+      }
+      .fa {
+        padding-bottom: 6px;
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        -ms-transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+      }

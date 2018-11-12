@@ -1,0 +1,73 @@
+<%
+    images = Array.new;
+    if @review.image != nil
+      images << @review.image
+    end
+    if @review.image2 != nil
+      images << @review.image2
+    end
+    if @review.image3 != nil
+      images << @review.image3
+    end
+    
+    if @review.image4 != nil
+      images << @review.image4
+    end
+%>
+<style>
+  img{
+    margin: 5px;
+    margin-left: 30px;
+  }
+  .container{
+    margin-top: 10%;
+  }
+  h2{
+    display: inline;
+  }
+</style>
+<div class="container" style="font-family: 'YiSunShinDotumM';">
+  
+  <div class="offset-sm-4 col-4" align="center">
+    <h2><%= @review.title %></h2>
+  </div>
+  <div class="offset-md-10 col-2">
+    <p><strong>작성자:</strong> <%= @review.user.name %></p>
+  </div>
+  
+  <hr>
+  <div class="offset-md-1 col-10">
+    <% images.each do |img| %>
+      <img src = "<%=img %>" width="400px" height="300px"/>
+    <%end%>
+  </div>
+    <br/><br/>
+  <div class="offset-sm-3 col-6">
+    <p><strong>후기 : </strong></p>
+    <p><%= @review.content %></p>
+  </div>
+  <br/><br/>
+  <hr>
+  
+  <center>
+  <% if signed_in? %>
+    <% if current_user.id == @review.user_id %>
+      <button style="color:white;" class="btn btn-danger btn-sm btn-signin">
+        <%= link_to '삭제', @review, method: :delete, data: { confirm: 'Are you sure?' }, :style => "color:white; text-decoration:none;" %>
+      </button>
+      <button style="color:white;" class="btn btn-danger btn-sm btn-signin">
+        <%= link_to '수정하기', edit_review_path(@review), :style => "color:white; text-decoration:none;" %> 
+      </button> 
+      <button style="color:white;" class="btn btn-danger btn-sm btn-signin">
+        <%= link_to '뒤로', reviews_path, :style => "color:white; text-decoration:none;" %> 
+      </button>
+    <%else%>
+      <button style="color:white;" class="btn btn-danger btn-sm btn-signin">
+        <%= link_to '뒤로', reviews_path, :style => "color:white; text-decoration:none; font-size:12px;" %> 
+      </button>
+    <%end%>
+  <%end%>
+  <br/><br/>
+  
+</div>
+</center>

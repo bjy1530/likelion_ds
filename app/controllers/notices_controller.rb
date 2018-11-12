@@ -1,6 +1,11 @@
 class NoticesController < ApplicationController
   def index
-    @notices = Notice.all
+    if params[:search]
+      @notices = Notice.search(params[:search])
+    else
+      @notices = Notice.all
+    end
+    
   end
 
   def new
@@ -17,17 +22,19 @@ class NoticesController < ApplicationController
   end
 
   def edit
-    authorize_action_for @notice
-    @notice = Notice.find(params[:id]);
-    @notice.update_attributes(title: params[:notice][:title], content: params[:notice][:content], deadline: params[:notice][:deadline]);
-    redirect_to '/notices'
+    @notice = Notice.find(params[:id])
   end
 
   def update
-    authorize_action_for @notice
+    @notice = Notice.find(params[:id])
+    @notice.update_attributes(title: params[:notice][:title], content: params[:notice][:content], deadline: params[:notice][:deadline])
+    redirect_to '/notices'
   end
 
   def destroy
-    authorize_action_for @notice
+    @notice = Notice.find(params[:id])
+    @notice.destroy
+    redirect_to '/notices'
   end
+ 
 end

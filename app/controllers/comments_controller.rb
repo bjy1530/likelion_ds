@@ -4,13 +4,9 @@ class CommentsController < ApplicationController
         
         @comment = @post.comments.build(comment_params)
         
-        # @c_user= @comment.user_id
+        # @comment_user_id = @post.user_id
         
-        
-        # @c_user_nickname=@c_user.find(nickname: params[:nickname])
-        # @comment_user= User.find_by(id:@c_user)
-        # @comment.nickname = @comment_user.nickname
-        
+        # @comment.nickname = @comment_user_id.nickname
         
         if @comment.save
             respond_to do |format|
@@ -28,9 +24,10 @@ class CommentsController < ApplicationController
                 format.js
             end
         end
+
     end
     
-    def _item
+    def _iCotem
      @comment_test=User.find(params[:id]).id
     end
 

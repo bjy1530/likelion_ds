@@ -1,42 +1,59 @@
-<head>
-    <style>
-        form {
-          background: -webkit-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
-          background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
-          background: linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
-          margin: auto;
-          position: relative;
-          width: 550px;
-          height: 450px;
-          font-family: Tahoma, Geneva, sans-serif;
-          font-size: 14px;
-          font-style: italic;
-          line-height: 24px;
-          font-weight: bold;
-          color: #09C;
-          text-decoration: none;
-          border-radius: 10px;
-          padding: 10px;
-          border: 1px solid #999;
-          border: inset 1px solid #333;
-          -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-          -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-          box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+
+        <style>
+          form{
+            font-family: 'Arita-dotum-Medium'; 
+          }
+        #title{
+            font-size: 15px;
+            font: bold;
         }
-        textarea{
-            width: 400px;
-            height: 250px;
+        #content{
+            font-size: 12px;
         }
+         .form-check{
+            display: inline;
+            margin-right: 4%;
+
+         }
     </style>
-</head>
-<body>
-    <center><h2>새글 쓰기</h2>
+    <br/><br/><br/><br/><br/><br/><br/><br/>
+    <center><h2 style="font-family: 'YiSunShinDotumM';">질문</h2>
+    <br/><br/>
     <div class="container">
         <%= form_for @post do |f| %>
-            <%= f.text_field 'title' %><br/><br/>
-            <%= f.text_area 'content' %><br/><br/>
-            <%= f.submit '제출'%>
+            <div class="form-group row">
+              <label for="example-text-input" class="col-4 col-form-label">제목</label>
+              <div class="col-4">
+                <%=f.text_field 'title',class: "form-control",id: "title" %><br/><br/>
+              </div>
+            </div>
+            <div class="form-check">
+                <%= f.radio_button :category, "프론트엔드" %>
+                <label class="form-check-label" for="exampleRadios1">
+                  프론트엔드
+                </label>
+              </div>
+              <div class="form-check">
+                <%= f.radio_button :category, "백엔드" %>
+                <label class="form-check-label" for="exampleRadios1">
+                  백엔드
+                </label>
+              </div>
+              <div class="form-check">
+                <%= f.radio_button :category ,"기타"%>
+                <label class="form-check-label" for="exampleRadios1">
+                  기타
+                </label>
+              </div><br/><br/>
+            <div class="form-group">
+                <label for="exampleTextarea">내용</label>
+                <div class="col-6">
+                    <%=f.text_area 'content',class: "form-control", rows: "30", id: "content"%><br/><br/>
+                </div>
+            </div>
+            <%= f.submit '작성', style: "color:white; text-decoration:none;", class: "btn btn-danger"%>
         <%end%>
     </div>
     </center>
+    <br/><br/>
 </body>

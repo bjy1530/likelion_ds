@@ -1,26 +1,63 @@
-<%=@post.title%>
-<br/>
-<%=@post.content%>
-<br/>
-<% if current_user.id == @post.user_id %>
-  <%=link_to '글수정', edit_post_path(@post.id)%>
-<%end%>
-<br/>
-    <h3>Comments</h3>
-        <!--코멘트 보기-->
-        
-          <ul id="comments">
-            <% @post.comments.each do |comment| %>
-              <%= render partial: "comments/item", locals: { comment: comment } %>
+
+      <style>
+        #notice_card{
+            text-align: center;
+        }
+        #collapseOne{
+            margin: 10%;
+            font-size: 15px;
+        }
+    </style>
+  <br/><br/><br/><br/><br/><br/><br/>
+  <div class="row justify-content-md-center" id="notice_card" style="font-family: 'YiSunShinDotumM';">
+          <div class="col-8" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="card">
+              <div class="card-header" role="tab" id="headingOne">
+                <h4>
+                  <label>제목&nbsp;:&nbsp;</label><%=@post.title%>
+                </h4>
+              </div>
+          
+              <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                <div class="card-block">
+                  <%= @post.content %>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <br/><br/>
+  <% if signed_in? %>
+    <% if current_user.id == @post.user_id %>
+      <center><%=link_to '글수정', edit_post_path(@post.id)%></center>
+    <%end%>
+  <%end%>
+  <br/>
+      <div class="offset-md-2 col-8"  style="font-family: 'YiSunShinDotumM';"> 
+      <h3>댓글</h3>
+          <!--코멘트 보기-->
+          
+            <ol id="comments" class="list-group">
+              <% @post.comments.each do |comment| %>
+                <%= render partial: "comments/item", locals: { comment: comment } %>
+              <% end %>
+            </ol> 
+          <br/>
+          <% if signed_in?%>
+          <div class="form-group" >
+            <%= form_for [@post, @post.comments.new], remote: true do |f| %>
+              
+                  <%= f.hidden_field :nickname, :value => current_user.nickname %>
+                  <%= f.hidden_field :user_id, :value => current_user.id %>
+                  <%= f.text_area :context , class: "form-control offset-sm-1 col-10", id: "exampleFormControlTextarea1", row: "3"%><br/>
+                  <%= f.submit "댓글달기" , style: "color:white; text-decoration:none;", class: "btn btn-danger offset-sm-10"%><br/>
             <% end %>
-          </ul> 
-    
-    <p> 
-        <%= form_for [@post, @post.comments.new], remote: true do |f| %>
-            <%= f.hidden_field :user_nickname, :value => current_user.nickname %>
-            <%= f.hidden_field :user_id, :value => current_user.id %>
-            <%= f.text_area :context %>
-            <%= f.submit %>
-        <% end %>
-    </p>
-  <%= link_to '홈', posts_path %>
+          <%end%>
+          </div>
+      </div>
+      <center>
+         <button type="button" class="btn btn-outline-primary">
+         <%= link_to '목록', posts_path %></button>
+       </center>
+       <br/><br/>
+</body>

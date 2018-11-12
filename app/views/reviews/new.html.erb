@@ -1,0 +1,12 @@
+<div class="container" style="font-family: 'YiSunShinDotumM';">
+    <br/><br/><br/><br/><br/><br/><br/>
+    
+    <center><h1>리뷰 작성하기</h1></center>
+    <div class="offset-md-3">    
+        <%= render 'form', review: @review %>
+        <br/><br/>
+        <button style="color:white;" class="btn btn-danger btn-sm btn-signin offset-md-8">
+            <%= link_to 'Back', reviews_path , :style => "color:white; text-decoration:none; font-size:12px;" ,class: " col-1"%>
+        </button><br/><br/>
+    </div>
+</div>

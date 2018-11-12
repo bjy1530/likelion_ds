@@ -3,7 +3,7 @@
     $("#comment_content").val("")
     
     var html = "<%= escape_javascript(render(partial: 'comments/item', locals: {comment: @comment})) %>";
-    
     $("#comments").append(html);
+
 
 })(jQuery)

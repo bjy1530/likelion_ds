@@ -1,0 +1,84 @@
+<style>
+  label{
+    font-size: 15px;
+    margin-bottom: 2%;
+  }
+  .form-check{
+    display: inline;
+    margin-right: 4%;
+
+  }
+</style>
+<br/><br/><br/><br/>
+<%= simple_form_for(@review) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-group row">
+    <div class="col-8">
+      <label>후기 제목</label><br/>
+      <%= f.text_field :title , class: "form-control" %>
+    </div>
+  </div>
+  <br/>
+  <div class="form-check">
+    <%= f.radio_button :category, "아이디어톤" %>
+    <label class="form-check-label" for="exampleRadios1">
+      아이디어톤 후기
+    </label>
+  </div>
+  <div class="form-check">
+    <%= f.radio_button :category, "해커톤" %>
+    <label class="form-check-label" for="exampleRadios1">
+      해커톤 후기
+    </label>
+  </div>
+  <div class="form-check">
+    <%= f.radio_button :category ,"친목후기"%>
+    <label class="form-check-label" for="exampleRadios1">
+      친목 후기
+    </label>
+  </div>
+  <div class="form-check">
+    <%= f.radio_button :category, "스터디후기" %>
+    <label class="form-check-label" for="exampleRadios1">
+      스터디 후기
+    </label>
+  </div>
+  <br/><br/>
+  <div class="form-group row">
+    <div class="col-8">
+      <label>후기 내용</label><br/>
+      <%= f.text_area :content ,class: "form-control" ,:style => "height:300px;"%>
+    </div>
+  </div>
+  <label>후기 이미지</label><br/>
+  <div class="form-group row">
+    <div class="col-8">  
+      <%= f.file_field :image,class: "form-control"  ,:style => "font-size:12px;"%>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-8">  
+      <%= f.file_field :image2,class: "form-control" ,:style => "font-size:12px;" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-8">
+      <%= f.file_field :image3,class: "form-control"  ,:style => "font-size:12px;"%>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-8">
+      <%= f.file_field :image4,class: "form-control",:style => "font-size:12px;" %>
+    </div>
+  </div>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  </div>
+
+  <center>
+  <div class="form-actions">
+    <%= f.submit "후기작성" , style: "color:white; text-decoration:none;", class: "btn btn-danger col-1"%><br/>
+  </div>
+  </center>
+<% end %>

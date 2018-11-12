@@ -4,7 +4,11 @@ class PostsController < ApplicationController
     before_action :authenticate_user!, only: [ :new, :edit, :create, :update, :destroy ]
     before_action :check_ownership, only: [:edit, :update, :destroy]
     def index
-       @posts = Post.all 
+        if params[:category]
+            @posts = Post.search(params[:category])
+        else
+            @posts = Post.all 
+        end
     end
     
     def new
@@ -14,6 +18,7 @@ class PostsController < ApplicationController
     def create
         @post = Post.new(post_params)
         @post.user_id = current_user.id
+        @post.user_nickname = current_user.nickname
         respond_to do |format|
         if @post.save
             format.html { redirect_to @post, notice: 'Post was successfully created.' }
@@ -27,6 +32,7 @@ class PostsController < ApplicationController
     
     def show
         @post = Post.find(params[:id])
+        @post_user = current_user
     end
     
     def edit
@@ -48,7 +54,7 @@ class PostsController < ApplicationController
     
     def destroy
         authorize_action_for @post
-       @post.destroy
+        @post.destroy
         respond_to do |format|
           format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
           format.json { head :no_content }
@@ -60,7 +66,7 @@ class PostsController < ApplicationController
     end
     
     def post_params
-      params.require(:post).permit(:title, :content, :image, :user_id)
+      params.require(:post).permit(:title, :content, :image, :user_id, :user_nickname, :category)
     end
     
      def check_ownership
