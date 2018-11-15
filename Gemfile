@@ -5,6 +5,9 @@ gem 'rolify'     # role 관리
 gem 'authority'  # 권한설정
 gem 'cancancan' #권한 관리
 gem 'rails_db'
+gem 'execjs'
+
+gem 'therubyracer', :platforms => :ruby
 #image uploadgem
 gem 'mini_magick'
 gem 'kaminari'
