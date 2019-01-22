@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  question1_radio: MyString
+  question2_radio: MyString
+  question3_radio: MyString
+  question4_radio: MyString
+  question1_str: MyString
+  question2_str: MyString
+  question3_str: MyString
+  question4_str: MyString
+  question5_str: MyString
+  last_word: MyString
+
+two:
+  question1_radio: MyString
+  question2_radio: MyString
+  question3_radio: MyString
+  question4_radio: MyString
+  question1_str: MyString
+  question2_str: MyString
+  question3_str: MyString
+  question4_str: MyString
+  question5_str: MyString
+  last_word: MyString

@@ -1,0 +1,93 @@
+<br><br><br><br><br><br>
+<%= simple_form_for(@apply) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+
+  <center>
+  <h1>덕성여자대학교 멋쟁이 사자처럼 지원서</h1>
+  <h5>한번 작성한 지원서는 수정이 불가능 하오니 이점 양해부탁드립니다.</h5>
+  </center>
+
+  <div class="personal_inform apply_font">
+    <label><b><b>*</b></b>이름 : </label>
+    <%= f.text_field :name, class: "form-control" %><br>
+    <label><b>*</b>학번 : </label>
+    <%= f.text_field :student_id, class: "form-control"%><br>
+    <label><b>*</b>학과 : </label>
+    <%= f.text_field :department, class: "form-control"%><br>
+    <label><b>*</b>연락처 : </label>
+    <%= f.text_field :contact, class: "form-control"%><br>
+    <label><b>*</b>이메일 : </label>
+    <%= f.text_field :nonuser_email, class: "form-control"%><br>
+  </div>
+  <!-- 질문 폼 -->
+  <div class="form-inputs apply_font">
+    <b>(해당 질문들은 강의를 준비할 때 참고하기 위한 질문들입니다. 선발과는 무관함을 알려드립니다.)</b><br>
+    <br>
+    <label><b>*</b>여름방학때도 스터디와 중앙 해커톤이 있을 예정입니다. 참여 가능하십니까? (해커톤 미참여시 수료 이수 불가)</label>
+    <div class="form_check_1">
+      <%= f.radio_button :question1_radio , "YES", class:"form-check-label"%> <label>YES</label>
+    </div>
+    <div class="form_check_1">
+      <%= f.radio_button :question1_radio , "NO" , class:"form-check-label"%> <label>NO</label>
+    </div>
+    <br><br>
+    <label><b>*</b>내년에도 계속 동아리를 참여 할 의향이 있으신가요?</label>
+    <div class="form_check_2">
+      <%= f.radio_button :question2_radio, "YES" , class:"form-check-label"%> <label>YES</label>
+    </div>
+    <div class="form_check_2">
+      <%= f.radio_button :question2_radio, "NO" , class:"form-check-label"%> <label>NO</label>
+    </div>
+    <br><br>
+    <label><b>*</b>html, css 를 배운적이 있나요?</label>
+    <div class="form_check_3">
+      <%= f.radio_button :question3_radio, "YES" , class:"form-check-label"%><label>YES</label>
+    </div>
+    <div class="form_check_3">
+      <%= f.radio_button :question3_radio, "NO" , class:"form-check-label"%><label>NO</label>
+    </div>
+    <br><br>
+    <label><b>*</b>파이썬을 배운적이 있나요?</label>
+    <div class="form_check_4">
+      <%= f.radio_button :question4_radio, "YES" , class:"form-check-label"%><label>YES</label>
+    </div>
+    <div class="form_check_4">
+      <%= f.radio_button :question4_radio, "NO" , class:"form-check-label" %><label>NO</label>
+    </div>
+    <br><br>
+    <div class="3grade_qustion">
+      <label>1,2,3학년 공통 질문</label><br>
+      <label><b>*</b>Q1.현재 자신이 하고있는 동아리나 봉사활동 등 대외활동이 있는지를 적어주세요.</label> <%= f.text_area :question1_str ,class: "form-control"%><br>
+      <label><b>*</b>Q2.우리 동아리와 어떻게 병행할 것인지도 함께 적어주세요.</label><%= f.text_area :question2_str ,class: "form-control"%><br>
+    </div>
+
+    <div class="4grade_question">
+      <label>4학년 질문</label><br>
+      <div class="include">
+        <b>(해당 사람들만)</b><sub>해당사항 없다면 <b>*</b>없음으로 적어주세요.</sub><br><br>
+        <label><b>*</b>졸업 프로젝트, 졸업 작품과 동아리 활동을 어떻게 병행할 것인지 적어주세요.</label>
+        <%= f.text_area :question3_str ,class: "form-control"%>
+      </div>
+      <br><br>
+      <div class="not_include">
+        <b>(해당 없는경우)</b><br><br>
+        <label>현재 자신이 하고있는 동아리나 봉사활동 등 대외활동이 있는지를 적어주세요.</label>
+        <%= f.text_area :question4_str ,class: "form-control"%><br>
+        <label>우리 동아리와 어떻게 병행할 것인지도 함께 적어주세요.</label>
+        <%= f.text_area :question5_str ,class: "form-control"%><br>
+      </div>
+
+    </div>
+    <div class="last_word">
+      <label>마지막 한마디</label>
+      <%= f.text_area :last_word ,class: "form-control"%>
+    </div>
+    <br><br>
+  </div>
+
+  <div class="form-actions apply_font">
+    <%= f.button :submit, class: "btn btn-danger offset-md-5 col-2" %>
+  </div>
+<% end %>

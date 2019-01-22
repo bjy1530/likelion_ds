@@ -54,23 +54,27 @@
   </div>
   <label>후기 이미지</label><br/>
   <div class="form-group row">
-    <div class="col-8">  
-      <%= f.file_field :image,class: "form-control"  ,:style => "font-size:12px;"%>
-    </div>
-  </div>
-  <div class="form-group row">
-    <div class="col-8">  
-      <%= f.file_field :image2,class: "form-control" ,:style => "font-size:12px;" %>
+    <div class="col-8">
+      <%=f.label :image%>
+      <%= f.file_field :image,accept: 'image/png,image/gif,image/jpeg',class: "form-control"  ,:style => "font-size:12px;"%>
     </div>
   </div>
   <div class="form-group row">
     <div class="col-8">
-      <%= f.file_field :image3,class: "form-control"  ,:style => "font-size:12px;"%>
+      <%=f.label :image2%>
+      <%= f.file_field :image2,accept: 'image/png,image/gif,image/jpeg',class: "form-control" ,:style => "font-size:12px;" %>
     </div>
   </div>
   <div class="form-group row">
     <div class="col-8">
-      <%= f.file_field :image4,class: "form-control",:style => "font-size:12px;" %>
+      <%=f.label :image3%>
+      <%= f.file_field :image3,accept: 'image/png,image/gif,image/jpeg',class: "form-control"  ,:style => "font-size:12px;"%>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-8">
+      <%=f.label :image4%>
+      <%= f.file_field :image4,accept: 'image/png,image/gif,image/jpeg',class: "form-control",:style => "font-size:12px;" %>
     </div>
   </div>
     <%= f.hidden_field :user_id, :value => current_user.id %>

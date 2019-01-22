@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/carrierwaveuploader/carrierwave.git
+  revision: 9d17a443d39ddf0c44bac985f69bf4c94d923a16
+  specs:
+    carrierwave (1.3.1)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -52,10 +61,6 @@ GEM
     builder (3.2.3)
     byebug (10.0.1)
     cancancan (2.2.0)
-    carrierwave (1.2.2)
-      activemodel (>= 4.0.0)
-      activesupport (>= 4.0.0)
-      mime-types (>= 1.16)
     codemirror-rails (5.16.0)
       railties (>= 3.0, < 6.0)
     coffee-rails (4.1.1)
@@ -75,12 +80,32 @@ GEM
       responders
       warden (~> 1.2.3)
     erubis (2.7.0)
+    excon (0.62.0)
+    exec (0.0.3)
     execjs (2.7.0)
     ffi (1.9.23)
+    fog-aws (3.3.0)
+      fog-core (~> 2.1)
+      fog-json (~> 1.1)
+      fog-xml (~> 0.1)
+      ipaddress (~> 0.8)
+    fog-core (2.1.2)
+      builder
+      excon (~> 0.58)
+      formatador (~> 0.2)
+      mime-types
+    fog-json (1.2.0)
+      fog-core
+      multi_json (~> 1.10)
+    fog-xml (0.1.3)
+      fog-core
+      nokogiri (>= 1.5.11, < 2.0.0)
+    formatador (0.2.5)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
+    ipaddress (0.8.3)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -233,10 +258,12 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   cancancan
-  carrierwave (~> 1.0)
+  carrierwave!
   coffee-rails (~> 4.1.0)
   devise
+  exec
   execjs
+  fog-aws
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
@@ -255,4 +282,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.17.1
+   1.17.2

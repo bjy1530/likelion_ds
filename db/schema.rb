@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180516041228) do
+ActiveRecord::Schema.define(version: 20190121114659) do
+
+  create_table "applies", force: :cascade do |t|
+    t.string   "student_id",      default: "", null: false
+    t.string   "name",            default: "", null: false
+    t.string   "department",      default: "", null: false
+    t.string   "contact",         default: "", null: false
+    t.string   "nonuser_email",   default: "", null: false
+    t.string   "question1_radio", default: "", null: false
+    t.string   "question2_radio", default: "", null: false
+    t.string   "question3_radio", default: "", null: false
+    t.string   "question4_radio", default: "", null: false
+    t.string   "question1_str",   default: "", null: false
+    t.string   "question2_str",   default: "", null: false
+    t.string   "question3_str",   default: "", null: false
+    t.string   "question4_str"
+    t.string   "question5_str"
+    t.string   "last_word"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"

@@ -1,0 +1,85 @@
+<br><br>
+<center>
+<p id="notice"><%= notice %></p>
+
+<div class="apply_show_container">
+  <p class="apply_font">
+    <label class="apply_show_label">이름</label>
+    <%= @apply.name %>
+  </p>
+  <p class="apply_font">
+    <label class="apply_show_label">학번</label>
+    <%=@apply.student_id%>
+  </p>
+  <p class="apply_font">
+    <label class="apply_show_label">학과</label>
+    <%=@apply.department%>
+  </p>
+  <p class="apply_font">
+    <label class="apply_show_label">이메일</label>
+    <%=@apply.nonuser_email%>
+  </p>
+  <p class="apply_font">
+    <label class="apply_show_label">연락처</label>
+    <%=@apply.contact%>
+  </p>
+</div>
+
+
+<p class="apply_font">
+  <label class="apply_show_label">여름방학때도 스터디와 중앙 해커톤이 있을 예정입니다. 참여 가능하십니까? (해커톤 미참여시 수료 이수 불가)</label>
+  <%= @apply.question1_radio %>
+</p>
+
+<p class="apply_font">
+  <label class="apply_show_label">내년에도 계속 동아리를 참여 할 의향이 있으신가요?</label>
+  <%= @apply.question2_radio %>
+</p>
+
+<p class="apply_font">
+  <label class="apply_show_label">html, css 를 배운적이 있나요?</label>
+  <%= @apply.question3_radio %>
+</p>
+
+<p class="apply_font">
+  <label class="apply_show_label">파이썬을 배운적이 있나요?</label>
+  <%= @apply.question4_radio %>
+</p>
+
+<p class="">
+  <label class="apply_show_label">Q1.현재 자신이 하고있는 동아리나 봉사활동 등 대외활동이 있는지를 적어주세요.:</label>
+  <div class="apply_show_content apply_font"><%= @apply.question1_str %></div>
+</p>
+
+<p class="">
+  <label class="apply_show_label">Q2.우리 동아리와 어떻게 병행할 것인지도 함께 적어주세요.</label>
+  <div class="apply_show_content apply_font"><%= @apply.question2_str %></div>
+</p>
+
+<p class="">
+  <label class="apply_show_label">졸업 프로젝트, 졸업 작품과 동아리 활동을 어떻게 병행할 것인지 적어주세요.</label>
+  <div class="apply_show_content apply_font"><%= @apply.question3_str %></div>
+</p>
+
+<p class="">
+  <label class="apply_show_label">현재 자신이 하고있는 동아리나 봉사활동 등 대외활동이 있는지를 적어주세요.</label>
+  <div class="apply_show_content apply_font"><%= @apply.question4_str %></div>
+</p>
+
+<p class="">
+  <label class="apply_show_label">우리 동아리와 어떻게 병행할 것인지도 함께 적어주세요.</label>
+  <div class="apply_show_content apply_font"><%= @apply.question5_str %></div>
+</p>
+
+<p class="">
+  <label class="apply_show_label">마지막 한마디</label>
+  <div class="apply_show_content apply_font">
+      <%= @apply.last_word %>
+  </div>
+</p>
+
+
+<%= link_to 'Edit', edit_apply_path(@apply) , class: "btn btn-danger" %> |
+<%= link_to 'Back', applies_path , class: "btn btn-danger"%>
+
+</center>

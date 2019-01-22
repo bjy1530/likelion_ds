@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/1
   # GET /reviews/1.json
   def show
-    
+
   end
 
   # GET /reviews/new
@@ -30,40 +30,17 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
-
-    uploader = ReviewImageUploader.new
-    if params[:review][:image] != nil
-      uploader.store!(params[:review][:image])
-      @review.image = uploader.url
-    end
-    
-    if params[:review][:image2] != nil
-      uploader.store!(params[:review][:image2])
-      @review.image2 = uploader.url
-    end
-    
-    if params[:review][:image3] != nil
-      uploader.store!(params[:review][:image3])
-      @review.image3 = uploader.url
-    end
-    
-    if params[:review][:image4] !=nil
-      uploader.store!(params[:review][:image4])
-      @review.image4 = uploader.url
-    end
-    
-    
     respond_to do |format|
       if @review.save
         format.html { redirect_to @review, notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
-	
+
       else
         format.html { render :new }
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
-    
+
     # Review.create(title: params[:review][:title], content: params[:review][:content], image: params[:review][:image])
     # redirect_to '/reviews'
   end

@@ -1,18 +1,20 @@
 Rails.application.routes.draw do
 
+  resources :applies
   devise_for :users
   #프론트에서 만든 초기 화면 페이지가 root입니다.
   root "main#mainPage"
   resources :posts, exception: [:show] do
-    post "/like", to: "likes#like_toggle" 
+    post "/like", to: "likes#like_toggle"
     resources :comments, only: [:create, :destroy]
   end
-  
+
   resources :comments, only: [:create, :destroy]
   get 'main/introPage' => 'main#introPage'
-  
-  resources :notices  
+
+  resources :notices
   resources :reviews
+  resources :applies
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

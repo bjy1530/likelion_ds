@@ -6,12 +6,14 @@ gem 'authority'  # 권한설정
 gem 'cancancan' #권한 관리
 gem 'rails_db'
 gem 'execjs'
+gem 'exec'
 
 gem 'therubyracer', :platforms => :ruby
 #image uploadgem
 gem 'mini_magick'
 gem 'kaminari'
-gem 'carrierwave', '~>1.0'
+gem 'fog-aws'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 # 페이지 뷰를 깔끔하게 보이도록 하기 위해서 아래의 두 젬을 추가로 설치한다.
 gem 'bootstrap-sass'
 gem 'simple_form'
@@ -58,4 +60,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-

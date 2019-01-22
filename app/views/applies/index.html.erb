@@ -1,0 +1,45 @@
+<br><br><br><br>
+
+<p id="notice"><%= notice %></p>
+<center>
+<h1>덕성여자대학교 멋쟁이 사자처럼</h1>
+<h2>7기 지원 현황</h2>
+<div class="apply_notice">
+    <h1>공지 사항</h1>
+    <p>안녕하세요. 멋쟁이 사자처럼 운영진 일동입니다.</p>
+    <p>7기 지원서를 작성하기 앞서 유의 사항을 말씀드리겠습니다.</p>
+    <label>첫번째, </label>
+    <p>저희 멋쟁이 사자처럼은 중앙 운영 회비로 각 1인당 5만원씩 제출합니다.<br> 중앙 운영 회비의 부담감으로 별도의 덕성여자대학교 운영회비는 제출 받지 않을 예정입니다.</p>
+    <label>두번째, </label>
+    <p>덕성여자 대학교 멋쟁이 사자처럼은 주 2회씩 교육을 진행합니다. 덕성여대 교육과는 별도로 중앙 운영회에서도 온라인 강의를 제공해 드립니다.<br>
+        여기서 유의 사항으로는 덕성여대 멋쟁이 사자처럼은 결석 2회 또는 과제 미제출 2회 초과 시 퇴출입니다. 또한, 30분 이상 지각을 2회 했을 경우<br>
+        1회 결석으로 환산되며, 퇴출 시 가입비 5만원은 환불 받지 못한다는 것을 알려드립니다.</p>
+    <label>세번째, </label>
+    <p>멋쟁이 사자처럼의 수료 조건은 중앙) 중앙 OT 참석, 아이디어톤 투표, 해커톤 참여, 과제 제출, 온라인 강의 100% 시청을 수료 조건으로 두고 있습니다.<br> 이 중 하나라도 미수료 될 경우 중앙 수료가 어려움을 말씀드립니다.
+    <br> 덕성여대) 엠티, 오티, 과제 등에 미수료 시 교내 수료가 어려움을 알려드립니다.<br> 교내와 중앙 두곳에서 수료 인정이 되어야 멋쟁이 사자처럼 동아리 수료증이 발급됨을 알려드립니다. </p>
+</div>
+</center>
+<% @applies.each do |apply| %>
+<table class="offset-3 col-6 apply-table">
+  <thead>
+      <th>번호</th><th>학번</th><th>학과</th>
+  </thead>
+  <tbody>
+    <tr height="30">
+      <td><%= apply.id%></td>
+      <td><%= apply.student_id %></td>
+      <td><%= apply.department %> &nbsp;
+        <% if signed_in? %>
+            <% if current_user.has_role? :admin %>
+                <%= link_to 'show', apply_path(apply.id) %>
+            <%else%>
+            <%end%>
+        <%end%>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<% end %>
+<br>
+
+<%= link_to '지원하기', new_apply_path, class: "btn btn-danger offset-md-5 col-2" %>
